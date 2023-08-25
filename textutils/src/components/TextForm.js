@@ -27,6 +27,10 @@ export default function TextForm(props) {
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
+            style={{
+              backgroundColor: `${props.mode === "dark" ? "black" : "white"}`,
+              color: `${props.mode === "dark" ? "white" : "black"}`,
+            }}
             value={text}
             className="form-control"
             id="myBox"
@@ -51,7 +55,7 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length} Minutes Read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter something to preview here!"}</p>
       </div>
     </>
   );
