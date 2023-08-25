@@ -6,15 +6,18 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase(text);
     setText(newText);
+    props.showAlert("Converted to UppserCase", "success");
   };
 
   const handleLoClick = () => {
     let newText = text.toLowerCase(text);
     setText(newText);
+    props.showAlert("Converted to LowerCase", "success");
   };
 
   const handleClearText = () => {
     setText("");
+    props.showAlert("All Text Cleared", "success");
   };
 
   const handleOnChange = (event) => {
@@ -38,15 +41,20 @@ export default function TextForm(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button onClick={handleUpClick} className="btn btn-primary mx-1">
-          Convert to Uppercase
-        </button>
-        <button onClick={handleLoClick} className="btn btn-primary mx-1">
-          Convert to Lowercase
-        </button>
-        <button onClick={handleClearText} className="btn btn-primary mx-1">
-          Clear Text
-        </button>
+        <div className="container">
+          <button onClick={handleUpClick} className="btn btn-primary mx-1 my-1">
+            Convert to Uppercase
+          </button>
+          <button onClick={handleLoClick} className="btn btn-primary mx-1 my-1">
+            Convert to Lowercase
+          </button>
+          <button
+            onClick={handleClearText}
+            className="btn btn-primary mx-1 my-1"
+          >
+            Clear Text
+          </button>
+        </div>
       </div>
       <div className="container my-3">
         <h2>Your text summary</h2>
