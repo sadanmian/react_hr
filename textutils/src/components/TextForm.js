@@ -24,6 +24,11 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipboard!", "success");
+  };
+
   return (
     <>
       <div className="container">
@@ -63,13 +68,20 @@ export default function TextForm(props) {
           >
             Clear Text
           </button>
+          <button
+            disabled={text.length === 0}
+            onClick={handleCopy}
+            className="btn btn-primary mx-1 my-1"
+          >
+            Copy
+          </button>
         </div>
       </div>
       <div className="container my-3">
         <h2>Your text summary</h2>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
